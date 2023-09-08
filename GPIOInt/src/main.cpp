@@ -9,12 +9,9 @@
 #include "HCSR04Range.h"
 #include "stdio.h"
 
-#define NUM_SENSORS 4
+#define TRIG_GP  	14
+#define ECHO_GP 	15
 
-#define WEST  		06		//GP06 Trigger GP07 Echo
-#define EAST  		14		//GP14 Trigger GP15 Echo
-#define NORTH  	18		//GP18 Trigger GP19 Echo
-#define SOUTH  	20		//GP20 Trigger GP21 Echo
 
 /***
  * Main
@@ -25,7 +22,7 @@ int main( void ){
     sleep_ms(2000);
     printf("GO\n");
 
-    HCSR04Range range(WEST, WEST +1);
+    HCSR04Range range(TRIG_GP,  ECHO_GP);
 
 
 	for(;;){

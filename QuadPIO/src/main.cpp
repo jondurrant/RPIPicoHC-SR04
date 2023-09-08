@@ -11,10 +11,10 @@
 
 #define NUM_SENSORS 4
 
-#define WEST  		06		//GP06 Trigger GP07 Echo
-#define EAST  		14		//GP14 Trigger GP15 Echo
-#define NORTH  	18		//GP18 Trigger GP19 Echo
-#define SOUTH  	20		//GP20 Trigger GP21 Echo
+#define NORTH  	6		//GP06 Trigger GP07 Echo
+#define EAST  		8		//GP08 Trigger GP09 Echo
+#define SOUTH  	2		//GP02 Trigger GP03 Echo
+#define WEST  		4		//GP04 Trigger GP05 Echo
 
 
 /***
@@ -31,15 +31,15 @@ int main( void ){
 	// echo pin must be on gpio pin trigger + 1.
     DistanceSensor* sensors[NUM_SENSORS];
 
-	sensors[0] = new  DistanceSensor(pio0, 0, 		WEST);
-	sensors[1] = new DistanceSensor(pio0, 	1, 		NORTH);
-	sensors[2] = new DistanceSensor(pio0, 	2, 	EAST);
-	sensors[3] = new DistanceSensor(pio0, 	3, 	SOUTH);
+	sensors[0] = new  DistanceSensor(pio0,  0, 	NORTH);
+	sensors[1] = new DistanceSensor(pio0, 	1, 	EAST);
+	sensors[2] = new DistanceSensor(pio0, 	2, 	SOUTH);
+	sensors[3] = new DistanceSensor(pio0, 	3, 	WEST);
 
 	for(;;){
 
 
-		//Read strategy 2
+		//Read strategy
 		for (int i=0; i < NUM_SENSORS; i++){
 			sensors[i]->TriggerRead();
 			while (sensors[i]->is_sensing){

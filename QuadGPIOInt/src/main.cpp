@@ -11,10 +11,11 @@
 
 #define NUM_SENSORS 4
 
-#define WEST  		06		//GP06 Trigger GP07 Echo
-#define NORTH  	18		//GP18 Trigger GP19 Echo
-#define EAST  		14		//GP14 Trigger GP15 Echo
-#define SOUTH  	20		//GP20 Trigger GP21 Echo
+
+#define NORTH  	6		//GP06 Trigger GP07 Echo
+#define EAST  	8		//GP08 Trigger GP09 Echo
+#define SOUTH  	2		//GP02 Trigger GP03 Echo
+#define WEST  	4		//GP04 Trigger GP05 Echo
 
 /***
  * Main
@@ -26,11 +27,11 @@ int main( void ){
     printf("GO\n");
 
     HCSR04Range *ranges[NUM_SENSORS];
-    ranges[0] = new HCSR04Range(WEST, WEST +1);
-    ranges[1] = new HCSR04Range(NORTH, NORTH +1);
-    ranges[2] = new HCSR04Range(EAST, EAST +1);
-    ranges[3] = new HCSR04Range(SOUTH, SOUTH +1);
 
+    ranges[0] = new HCSR04Range(NORTH, NORTH +1);
+    ranges[1] = new HCSR04Range(EAST, EAST +1);
+    ranges[2] = new HCSR04Range(SOUTH, SOUTH +1);
+    ranges[3] = new HCSR04Range(WEST, WEST +1);
 
 
 	for(;;){
